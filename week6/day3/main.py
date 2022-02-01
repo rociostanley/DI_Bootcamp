@@ -12,3 +12,8 @@ print(b)
 print(c)
 print(d)
 
+#EXloops
+num = int(input("please enter a numer: "))
+
+for i in range(1, 13):
+    print (f"{i} * {num} = {num * i}")
