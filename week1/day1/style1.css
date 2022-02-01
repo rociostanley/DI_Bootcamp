@@ -1,0 +1,11 @@
+/*Selector {
+	Property:  value;
+}*/
+
+h1 {
+	color: deeppink;}
+	h2 { color: mediumpurple; }
+	p { color: lightcoral; }
+	p { border: 2px solid lightcoral;
+	padding: 30px;}
+	body{ color: hotpink; }\

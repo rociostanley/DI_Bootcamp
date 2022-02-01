@@ -1,0 +1,36 @@
+:root{
+  --pixel-20-gap: 20px;
+  --bg-color-red:
+}
+*{
+margin: 0;
+padding: 0;
+}
+.wrapper {
+  height: 100vh;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas:
+  "header header header"
+  "sidebar content content"
+  "footer footer footer"
+}
+header {
+  grid-area: header;
+  border: 1px solid #000
+  backround-color: var(--bg-color-red);
+  padding: var(--pixel-20-gap);
+}
+article  {
+  grid-area: content;
+  border: 1px solid #000
+  backround-color: orange;
+  padding: 50px;
+}
+aside {
+  grid-area: footer;
+  border: 1px solid #000
+  backround-color: red;
+  padding: 25px;
+}

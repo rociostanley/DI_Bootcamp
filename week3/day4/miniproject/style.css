@@ -1,0 +1,28 @@
+
+*{
+    margin: 0;
+}
+#clear { font-size: 40px; }
+#pallet {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    width: 20%;
+    height: 100vh;
+    grid-gap: 4px;
+    background-color: grey;
+    padding: 8px;
+    float: left;
+}
+button{
+    display: inline-block;
+    grid-column: 1/4;
+}
+#canvas {display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    height: 100vh;
+
+}
+div{
+    border: 1px solid darkgrey;
+}
