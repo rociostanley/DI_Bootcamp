@@ -2,7 +2,7 @@ birthday = input('please enter your birthday in format DD/MM/YYYY: ')
 bday = birthday.split('/')
 bday_year = int(bday[2])
 
-date_today = '06/05/2021'
+date_today = '02/01/2022'
 date_today_list = date_today.split('/')
 date_year = int(date_today_list[2])
 
