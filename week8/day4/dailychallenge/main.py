@@ -1,61 +1,67 @@
-from random import randint
 import random
-
-# Daily Challenge
 
 
 class Gene:
-    def __init__(self, gene=0):
-        self.gene = gene
+    def __init__(self, value=1):
+        self.value = value
+
+    def mutate(self, probability):
+        self.value = random.choices([random.randrange(0, 2)], probability)
+
+
+class Chromosome:
+    def __init__(self, genes):
+        if not len(genes) == 10:
+            raise Exception("The chromosome must contain 10 genes")
+
+        self.genes = genes
+
+    def mutate(self, probability):
+        for i in range(len(self.genes)):
+            self.genes[i] = self.genes[i].mutate(probability)
+
+    def is_all_ones(self):
+        for gene in self.genes:
+            if gene.value != 1:
+                return False
+
+        return True
+
+
+class DNA:
+    def __init__(self, chromosomes):
+        if not len(chromosomes) == 10:
+            raise Exception("The DNA must contain 10 chromosomes")
+
+        self.chromosomes = chromosomes
+
+    def mutate(self, probability: 0.5):
+        for i in range(len(self.chromosomes)):
+            self.chromosomes[i] = self.chromosomes[i].mutate(probability)
+
+    def is_all_ones(self):
+        for chromosome in self.chromosomes:
+            if not chromosome.is_all_ones():
+                return False
+
+        return True
+
+
+class Organism:
+    def __init__(self, dna: DNA, probability):
+        self.dna = dna
+        self.probability = probability
+        self.generations_count = 0
 
     def mutate(self):
-        self.gene = randint(0, 1)
-        return self.gene
+        self.dna.mutate(self.probability)
+        if self.dna.is_all_ones():
+            print(f'the generations count is {self.generations_count}')
+            return
+
+        self.mutate()
 
 
-class Chromosome(Gene):
-    def __init__(self, chrom_series=0):
-        self.chrom_series = chrom_series
-        self.chromosome = []
-
-    def chrom_mutate(self):
-        self.chromosome = [
-            f'{self.mutate()}, {self.mutate()}, {self.mutate()}, {self.mutate()}, {self.mutate()}, {self.mutate()}, {self.mutate()}, {self.mutate()}, {self.mutate()}, {self.mutate()}']
-        return(self.chromosome)
-
-
-class Dna(Chromosome):
-    def __init__(self, dna_series=0):
-        self.dna_series = dna_series
-        self.dna = []
-
-    def dna_mutate(self):
-        self.dna = [
-            f'{self.chrom_mutate()},{self.chrom_mutate()}, {self.chrom_mutate()}, {self.chrom_mutate()}, {self.chrom_mutate()}, {self.chrom_mutate()}, {self.chrom_mutate()}, {self.chrom_mutate()}, {self.chrom_mutate()}, {self.chrom_mutate()}']
-        return(self.dna)
-
-
-ofir_genetics = Dna()
-ofir_genetics_dna = ofir_genetics.dna_mutate()
-
-
-class Organism():
-    def __init__(self, dna_result, environment=0):
-        self.dna_result = dna_result
-        self.environment = environment
-
-    def mutate_probability(self):
-        generation = 0
-        while self.environment == 0:
-            if 0 in self.dna_result:
-                generation += 1
-                self.environment == 0
-            else:
-                self.environment == 1
-            print(
-                f'The numbet of generations it took to create a mutate is: {generation}')
-            print(self.dna_result)
-
-
-ofir_organism = Organism(ofir_genetics_dna)
-ofir_organism.mutate_probability()
+gene = Gene()
+gene.mutate(k=5)
+print(gene)
