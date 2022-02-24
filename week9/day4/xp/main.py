@@ -1,5 +1,5 @@
+#EX1
 from typing import List
-
 
 class Building:
 	def __init__(self, address: str, inhabitants: List = []):
