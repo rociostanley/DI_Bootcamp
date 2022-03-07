@@ -1,6 +1,6 @@
 import random
 def get_words_from_file():
-    word_list = open('GIT\Week 10\Day 4\Exercises\Exercises XP\sowpods.txt','r').read().splitlines()
+    word_list = open('DI_Bootcamp-main\Week10\Day4\xp\sowpods.txt','r').read().splitlines()
     list_of_words = []
     for line in word_list:
         list_of_words.append(line)
