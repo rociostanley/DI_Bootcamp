@@ -1,21 +1,30 @@
-from anagram_checker import AnagramChecker
+import random
+def get_words_from_file():
+    word_list = open('GIT\Week 10\Day 4\Exercises\Exercises XP\sowpods.txt','r').read().splitlines()
+    list_of_words = []
+    for line in word_list:
+        list_of_words.append(line)
+    return list_of_words
 
-def is_user_input_valid():
+def get_random_sentence(length):
+    sentence = []
+    for _ in range(length):
+        sentence.append(random.choice(get_words_from_file()).lower())
+    return ' '.join(sentence)
+
+def main():
+    print("The program creates a list of strings from a text file,and then creates a random sentence in the wanted length")
     while True:
-        user_word = input("Input a word or type 'exit' to exit the program: ")
-        if user_word.isalpha():
-            return user_word
+        try:
+            length = int(input("What length would you like the sentence to be between 2-20? "))
+            if 2<=length<=20:
+                break
+            else:
+                print("Length should be between 2-20")
+        except:
+            print("Your inputs data is incorrect,exiting program")
+            return ""
+    print(get_random_sentence(length))
 
-def anagram():
-    print("Welcome to Anagram Checker!")
-    user_word = is_user_input_valid()
-    if user_word.lower() == 'exit':
-        print('Exiting the program')
-        return " "
-    print(f"Your Word: {user_word}")
-    print("This is a valid English word.")
-    word_list = open('GIT\Week 10\Day 5\Exercises\Anagram Checker\sowpods.txt','r').read().splitlines()
-    anagram = AnagramChecker(word_list)
-    print(f"Anagrams for your word: {anagram.get_anagrams(user_word)}")
 
-anagram()
+main()
